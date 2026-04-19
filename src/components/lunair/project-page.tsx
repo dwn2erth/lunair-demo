@@ -1,10 +1,14 @@
 import Link from "next/link";
-import { LayoutFilterShowcase, NeighbourhoodMap, PrototypeCta } from "@/components/lunair/prototype-ui";
+import {
+  LayoutFilterShowcase,
+  NeighbourhoodMap,
+  PrototypeCta,
+} from "@/components/lunair/prototype-ui";
 import { amenities, assets } from "@/lib/lunair-data";
 
 function ProjectHeader() {
   return (
-    <header className="site-header">
+    <header className="site-header shell-edge">
       <Link aria-label="Lunair home" href="/">
         <img alt="Lunair" className="brand-logo" src={assets.logo} />
       </Link>
@@ -17,55 +21,93 @@ function ProjectHeader() {
   );
 }
 
+function ProjectFooter() {
+  return (
+    <footer className="site-footer full-bleed">
+      <div className="footer-copy">
+        <div className="footer-news">
+          <h2>Subscribe to our news and be the first to receive unique offers</h2>
+          <form className="footer-form">
+            <label>
+              <span className="sr-only">Email</span>
+              <input placeholder="EMAIL" type="email" />
+            </label>
+            <button className="pill-link" type="submit">
+              <span>Subscribe</span>
+              <span aria-hidden="true">&rarr;</span>
+            </button>
+          </form>
+        </div>
+        <div className="footer-meta">
+          <p>Copyright © 2024 Mira Estate</p>
+          <div>
+            <Link href="/">Back to homepage</Link>
+            <a href="#layouts">Layouts</a>
+            <a href="#neighbourhood">Neighbourhood</a>
+          </div>
+        </div>
+      </div>
+      <img alt="Lunair" className="footer-logo" src={assets.logo} />
+    </footer>
+  );
+}
+
 export function ProjectPage() {
   return (
-    <main className="lunair-shell project-shell">
+    <main className="lunair-page">
       <ProjectHeader />
 
-      <section className="project-hero">
-        <div className="project-hero-top">
+      <section className="project-hero shell-edge">
+        <div className="project-hero-title">
           <h1>Mira Villas</h1>
           <PrototypeCta href="#consultation" label="Get consultation" />
         </div>
-        <div className="media-shell project-hero-media">
+        <div className="image-frame image-frame-project-hero">
           <img alt="Mira Villas hero" src={assets.projectHero} />
         </div>
-        <div className="slider-row">
-          <span className="slider-count">01 / 08</span>
-          <div className="slider-track" aria-hidden="true">
+        <div className="slider-row slider-row-wide">
+          <div className="slider-count-block">
+            <span className="slider-current">01</span>
+            <span className="slider-total">/ 08</span>
+          </div>
+          <div aria-hidden="true" className="slider-bar">
             <span style={{ width: "12.5%" }} />
           </div>
           <div className="slider-buttons">
-            <button className="icon-button ghost" type="button">
-              ←
+            <button aria-label="Previous" className="icon-button" type="button">
+              <span>&larr;</span>
             </button>
-            <button className="icon-button solid" type="button">
-              →
+            <button aria-label="Next" className="icon-button is-active" type="button">
+              <span>&rarr;</span>
             </button>
           </div>
         </div>
       </section>
 
-      <section className="project-intro">
-        <div className="project-meta">
+      <section className="project-intro shell-edge">
+        <div className="project-info-column">
           <div className="location-card">
-            <div className="location-icon">↗</div>
+            <div className="location-badge">&rarr;</div>
             <div>
-              <span className="eyebrow">Location</span>
+              <span className="meta-label">Location</span>
               <strong>Meydan, Dubai</strong>
             </div>
           </div>
-          <div className="kpi-grid">
+          <div className="project-kpi-grid">
             <article>
-              <span>From</span>
-              <strong>5 bed</strong>
+              <span>Type</span>
+              <strong>Villa</strong>
+            </article>
+            <article>
+              <span>Bedrooms</span>
+              <strong>5 Bed</strong>
+            </article>
+            <article>
+              <span>Bathrooms</span>
+              <strong>7 Bath</strong>
             </article>
             <article>
               <span>Interior</span>
-              <strong>7 bath</strong>
-            </article>
-            <article>
-              <span>Area</span>
               <strong>12,997 sq ft</strong>
             </article>
             <article>
@@ -76,40 +118,36 @@ export function ProjectPage() {
               <span>Views</span>
               <strong>Lagoon</strong>
             </article>
-            <article>
-              <span>Access</span>
-              <strong>15 min city</strong>
-            </article>
           </div>
         </div>
-        <div className="project-description">
+        <div className="project-text-column">
           <div className="tag-row">
             <span className="tag">Bentley Home</span>
             <span className="tag">Private Pool</span>
             <span className="tag">Lagoon Views</span>
             <span className="tag">5 Star Lounge</span>
           </div>
-          <p>
+          <p className="project-body">
             Mira Villas designed by Bentley Home is the world&apos;s first villa community featuring
             ready-to-move-in interiors by Bentley Home. Located in Meydan, just fifteen minutes
             from Burj Khalifa, these luxurious 5-bedroom villas and mansions offer stunning lagoon
-            views, private swimming pools, a one-of-a-kind gymnasium by Technogym and a 5-star
-            lounge for friendly or business gatherings.
+            views, private swimming pools, a one-of-kind gymnasium by Technogym and a 5-star lounge
+            for friendly or business gatherings. Every property also comes with a complete list of
+            household appliances by world-renowned brands.
           </p>
           <PrototypeCta href="#consultation" label="Get consultation" />
         </div>
       </section>
 
-      <section className="amenities-section">
-        <div className="sticky-copy">
-          <p className="eyebrow accent">Amenities</p>
+      <section className="amenities-section shell-edge">
+        <div className="amenities-sticky">
           <h2>The amenities speak for themselves</h2>
         </div>
-        <div className="amenity-grid">
+        <div className="amenities-grid">
           {amenities.map((amenity, index) => (
-            <article className={`amenity-card fade-up ${index % 3 === 1 ? "offset" : ""}`} key={amenity}>
+            <article className={`amenity-card${index % 4 === 1 || index % 4 === 3 ? " amenity-shift" : ""}`} key={amenity}>
               {index === 0 ? (
-                <div className="media-shell square">
+                <div className="image-frame image-frame-amenity">
                   <img alt={amenity} src={assets.projectAlt} />
                 </div>
               ) : null}
@@ -119,32 +157,30 @@ export function ProjectPage() {
         </div>
       </section>
 
-      <section className="section-grid" id="layouts">
-        <div className="split-heading">
-          <div className="section-title compact">
-            <h2>Project layouts</h2>
-          </div>
+      <section className="section-shell shell-edge" id="layouts">
+        <div className="section-heading-center">
+          <h2>Project layouts</h2>
           <PrototypeCta href="#consultation" label="Download brochure" />
         </div>
         <LayoutFilterShowcase />
       </section>
 
-      <section className="cta-block fade-up" id="consultation">
+      <section className="cta-block shell-edge" id="consultation">
         <h2>Want to know more ?</h2>
-        <div className="cta-form">
+        <div className="cta-panel">
           <div className="cta-row">
             <input placeholder="NAME" type="text" />
             <input placeholder="PHONE NUMBER" type="tel" />
-            <button className="button button-primary" type="button">
+            <button className="pill-link" type="button">
               <span>Get consultation</span>
-              <span aria-hidden="true">→</span>
+              <span aria-hidden="true">&rarr;</span>
             </button>
           </div>
           <p>
             By submitting this form, you agree to our <u>Privacy Policy</u>
           </p>
         </div>
-        <div className="cta-socials">
+        <div className="cta-footer">
           <p>or contact us through telegram or whatsapp</p>
           <div>
             <img alt="Telegram" src={assets.telegram} />
@@ -153,8 +189,8 @@ export function ProjectPage() {
         </div>
       </section>
 
-      <section className="section-grid" id="neighbourhood">
-        <div className="section-title compact">
+      <section className="section-shell shell-edge" id="neighbourhood">
+        <div className="section-heading-project-map">
           <h2>Neighbourhood</h2>
           <p>
             Live where life unfolds effortlessly. Our neighbourhoods combine modern living with
@@ -164,51 +200,27 @@ export function ProjectPage() {
         <NeighbourhoodMap />
       </section>
 
-      <section className="detail-copy">
+      <section className="detail-copy shell-offset">
         <div>
-          <span className="eyebrow">Description</span>
+          <span className="meta-heading">Description</span>
           <p>
             Mira Villas designed by Bentley Home is the world&apos;s first villa community featuring
-            ready-to-move-in interiors by Bentley Home. Every property also comes with a complete
-            list of household appliances by world-renowned brands.
+            ready-to-move-in interiors by Bentley Home. Located in Meydan, just fifteen minutes
+            from Burj Khalifa, these luxurious 5-bedroom villas and mansions offer stunning lagoon
+            views, private swimming pools, private gyms and a 5-star residents lounge.
           </p>
         </div>
         <div>
-          <span className="eyebrow">Benefits</span>
+          <span className="meta-heading">Benefits</span>
           <p>
-            The project balances lifestyle, prestige, and immediate visual identity. It is built
-            to feel like a finished hospitality-grade experience from day one, not an abstract
-            investment promise.
+            The project balances prestige, immediate visual identity and a refined lifestyle
+            proposition. It is designed to feel fully finished from the first glance, not
+            speculative.
           </p>
         </div>
       </section>
 
-      <footer className="site-footer project-footer">
-        <div className="footer-copy">
-          <div>
-            <h2>Subscribe to our news and be the first to receive unique offers</h2>
-            <form className="footer-form">
-              <label>
-                <span className="sr-only">Email</span>
-                <input placeholder="EMAIL" type="email" />
-              </label>
-              <button className="button button-primary" type="submit">
-                <span>Subscribe</span>
-                <span aria-hidden="true">→</span>
-              </button>
-            </form>
-          </div>
-          <div className="footer-meta">
-            <p>Copyright © 2024 Mira Estate</p>
-            <div>
-              <Link href="/">Back to homepage</Link>
-              <a href="#layouts">Layouts</a>
-              <a href="#neighbourhood">Neighbourhood</a>
-            </div>
-          </div>
-        </div>
-        <img alt="Lunair" className="footer-logo" src={assets.logo} />
-      </footer>
+      <ProjectFooter />
     </main>
   );
 }

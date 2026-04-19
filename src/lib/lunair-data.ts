@@ -55,6 +55,26 @@ export const regions = [
     copy: "Resort-style estates designed for slower coastal living.",
     image: assets.featureD,
   },
+  {
+    title: "Doha, Qatar",
+    copy: "Contemporary shoreline living shaped by culture and capital.",
+    image: assets.featureA,
+  },
+  {
+    title: "Riyadh, KSA",
+    copy: "Private compounds and bold city growth anchored in design.",
+    image: assets.featureB,
+  },
+  {
+    title: "Jeddah, KSA",
+    copy: "Sea-facing residences with hospitality-driven refinement.",
+    image: assets.featureC,
+  },
+  {
+    title: "Ras Al Khaimah",
+    copy: "Island resort residences with a slower, panoramic pace.",
+    image: assets.featureD,
+  },
 ];
 
 export const featuredProjects = [
