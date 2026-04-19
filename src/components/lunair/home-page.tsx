@@ -17,8 +17,10 @@ function SiteHeader() {
       </Link>
       <nav className="top-nav">
         <a href="#consultation">Search</a>
-        <a href="#featured-projects">Projects</a>
-        <a href="#faq">Menu</a>
+        <div className="top-nav-group">
+          <a href="#featured-projects">Projects</a>
+          <a href="#faq">Menu</a>
+        </div>
       </nav>
     </header>
   );
@@ -43,11 +45,15 @@ function Footer() {
         </div>
         <div className="footer-meta">
           <p>Copyright © 2024 Mira Estate</p>
-          <div>
-            <a href="#faq">Privacy Policy</a>
-            <a href="#faq">Cookie Policy</a>
-            <a href="#faq">LinkedIn</a>
-            <a href="#faq">Instagram</a>
+          <div className="footer-meta-links">
+            <div className="footer-meta-group">
+              <a href="#faq">Privacy Policy</a>
+              <a href="#faq">Cookie Policy</a>
+            </div>
+            <div className="footer-meta-group">
+              <a href="#faq">LinkedIn</a>
+              <a href="#faq">Instagram</a>
+            </div>
           </div>
         </div>
       </div>
